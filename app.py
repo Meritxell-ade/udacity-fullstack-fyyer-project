@@ -601,7 +601,7 @@ def delete_artist(artist_id):
 @app.route('/shows')
 def shows():
 
-  shows = db.session.query(show, Artist, Venue).join(Artist, Venue).all()
+  shows = db.session.query(show, Artist, Venue).join(Artist, Venue).order_by(show.c.start_time.desc()).all()
   data = []
 
   for sh in shows:
